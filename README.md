@@ -1,2 +1,1 @@
-# TENeT
-Telehealth Effectiveness and Necessity Tracker
+# TENeT: Telehealth Effectiveness and Necessity Tracker
