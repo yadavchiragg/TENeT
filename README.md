@@ -1,7 +1,7 @@
 # 🗺️ TENeT: Telehealth Effectiveness and Necessity Tracker
 
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Alaska GSoC 2026](https://img.shields.io/badge/GSoC-2026-red.svg)](https://summerofcode.withgoogle.com/)
 
 > Identifying where telehealth can make the biggest impact in Alaska
@@ -71,7 +71,7 @@ TENeT combines two critical datasets to answer: **"Where is telehealth both NEED
 | [FCC Broadband Map](https://broadbandmap.fcc.gov) | Coverage, speed, ISP data | Quarterly |
 | [M-Lab](https://www.measurementlab.net) | Real-world speed tests | Real-time |
 | [Ookla Open Data](https://www.speedtest.net/insights/) | Speedtest results | Quarterly |
-| broadbandmapping.com | Infrastructure maps | Monthly |
+| [broadbandmapping.com](https://www.broadbandmapping.com/) | Infrastructure maps | Monthly |
 
 ## 🚀 Quick Start
 
@@ -133,7 +133,8 @@ TENeT/
 ├── static/                # Frontend assets
 ├── templates/             # HTML templates
 ├── requirements.txt       # Python dependencies
-├── config.py              # Configuration
+├── config.example.py      # Example configuration
+├── config.py              # Configuration (gitignored)
 └── run.py                 # Entry point
 
 ## 🤝 Contributing
@@ -186,7 +187,7 @@ We welcome contributions! Areas needing help:
 
 ## 📄 License
 
-[MIT License](LICENSE) (or specify actual license)
+[Apache License 2.0](LICENSE)
 
 ## 🙏 Acknowledgments
 
