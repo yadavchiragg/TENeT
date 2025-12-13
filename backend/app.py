@@ -19,7 +19,7 @@ def project_info():
     """Returns project information"""
     return jsonify({
         'project': 'TENeT',
-        'description': 'Telecommunication Network Topology Visualization',
+        'description': 'Telehealth Effectiveness and Necessity Tracker',
         'focus': 'Alaska telecommunications infrastructure',
         'version': '0.1.0'
     }), 200
