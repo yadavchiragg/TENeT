@@ -1,211 +1,278 @@
-# 🗺️ TENeT: Telehealth Effectiveness and Necessity Tracker
+# TENeT: Telehealth Effectiveness and Necessity Tracker
 
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Alaska GSoC 2026](https://img.shields.io/badge/GSoC-2026-red.svg)](https://summerofcode.withgoogle.com/)
 
-> Identifying where telehealth can make the biggest impact in Alaska
+TENeT is a data-driven application that identifies Alaska regions that are "healthcare deserts" but have stable Internet connectivity, making them ideal candidates for telehealth services.
 
-## 🎯 The Problem
+## 🎯 Project Goal
 
-Alaska faces unique healthcare challenges:
-- **663,300 square miles** - Larger than Texas, California, and Montana combined
-- **733,391 residents** - Scattered across vast distances
-- **Many communities** lack nearby medical facilities
-- **Variable internet** connectivity across regions
-- **Weather conditions** can prevent travel for months
+Help healthcare providers and policymakers identify where telehealth can have the greatest impact by:
+- Mapping healthcare access across Alaska
+- Measuring Internet connectivity and performance
+- Calculating telehealth feasibility scores
+- Visualizing opportunities on an interactive map
 
-## 💡 What TENeT Does
+## 🏥 What is a Healthcare Desert?
 
-TENeT combines two critical datasets to answer: **"Where is telehealth both NEEDED and FEASIBLE?"**
+A healthcare desert is a region with limited healthcare access, determined by:
+- **Few health facilities** relative to population
+- **Long distances** to nearest clinic (50+ miles)
+- **Limited specialist availability**
+- **Poor transportation** infrastructure
 
-### Data Integration:
-1. **Healthcare Desert Identification**
-   - Distance to nearest clinic/hospital
-   - Specialist availability
-   - Transportation access
-   - Number of facilities per capita
+## 🌐 Why Alaska?
 
-2. **Internet Infrastructure Assessment**
-   - Connection speeds (upload/download)
-   - Reliability and latency
-   - ISP coverage
-   - Cost and accessibility
+Alaska presents unique healthcare challenges:
+- **229 federally recognized tribes** in remote locations
+- Many villages accessible only by plane or boat
+- Vast distances between communities
+- Growing telehealth infrastructure
 
-### Output:
-- **Interactive map** of Alaska
-- **Color-coded regions** showing telehealth priority areas
-- **Data-driven insights** for policymakers and healthcare providers
-- **Searchable database** of healthcare facilities and internet metrics
+TENeT helps identify which remote communities can benefit from telehealth right now.
 
-## 🏗️ Project Status
+## 📊 Features
 
-🚧 **Phase:** Initial Development  
-📅 **Timeline:** Alaska GSoC 2026 Project  
-👥 **Team:** Seeking contributors!  
-📊 **Progress:** Setting up foundation
+### Current (v0.1.0)
+- ✅ Healthcare desert identification algorithm
+- ✅ Telehealth feasibility scoring
+- ✅ Configurable metrics and thresholds
+- ✅ Comprehensive test suite
 
-## 🛠️ Technology Stack
+### Planned
+- 🔄 Healthcare facility data collection (healthsites.io)
+- 🔄 Internet performance data collection (FCC, broadband maps)
+- 🔄 Interactive Alaska map visualization
+- 🔄 Analytics dashboard
+- 🔄 Historical trend analysis
+- 🔄 Recommendation engine
 
-- **Backend:** Python 3.8+, Flask
-- **Data Processing:** Pandas, NumPy, GeoPandas
-- **Mapping:** Folium (OpenStreetMap), Leaflet
-- **Database:** SQLite (dev), PostgreSQL (prod)
-- **APIs:** REST with Flask
-- **Frontend:** HTML5, CSS3, JavaScript
-- **Testing:** pytest, unittest
+## 🏗️ Architecture
+```
+TENeT/
+├── backend/
+│   ├── data_collection/    # Data scraping and collection
+│   ├── analysis/            # Healthcare desert & telehealth algorithms
+│   ├── database/            # Data models and storage
+│   ├── api/                 # REST API endpoints
+│   └── config/              # Configuration settings
+├── frontend/
+│   ├── static/              # CSS, JS, images
+│   └── templates/           # HTML templates
+├── tests/                   # Comprehensive test suite
+├── docs/                    # Documentation
+└── scripts/                 # Utility scripts
+```
 
-## 📊 Data Sources
-
-### Healthcare Facilities
-| Source | Data | Coverage |
-|--------|------|----------|
-| [HealthSites.io](https://healthsites.io) | Global health facility database | Alaska subset |
-| [Medicare.gov](https://data.medicare.gov) | CMS certified facilities | All US, Alaska focus |
-| Alaska DHSS | State health department data | Alaska only |
-| Alaska Primary Care Assoc | Community health centers | Alaska only |
-
-### Internet Performance
-| Source | Data | Updates |
-|--------|------|---------|
-| [FCC Broadband Map](https://broadbandmap.fcc.gov) | Coverage, speed, ISP data | Quarterly |
-| [M-Lab](https://www.measurementlab.net) | Real-world speed tests | Real-time |
-| [Ookla Open Data](https://www.speedtest.net/insights/) | Speedtest results | Quarterly |
-| broadbandmapping.com | Infrastructure maps | Monthly |
-
-## 🚀 Quick Start
+## 🚀 Getting Started
 
 ### Prerequisites
 - Python 3.8 or higher
-- pip (Python package manager)
+- pip package manager
 - Git
-- (Optional) Virtual environment tool
 
 ### Installation
+
+1. **Clone the repository**
 ```bash
-# Clone the repository
 git clone https://github.com/KathiraveluLab/TENeT.git
 cd TENeT
-
-# Create virtual environment
-python3 -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Set up configuration
-cp config.example.py config.py
-# Edit config.py with your settings
-
-# Initialize database
-python init_db.py
-
-# Run development server
-python run.py
 ```
 
-Access the application at: `http://localhost:5000`
+2. **Create virtual environment**
+```bash
+python -m venv venv
 
-## 📂 Project Structure
+# On Windows:
+venv\Scripts\activate
 
-TENeT/
-├── src/
-│   ├── data/              # Data collection modules
-│   │   ├── healthcare_collector.py
-│   │   ├── internet_collector.py
-│   │   └── processor.py
-│   ├── maps/              # Visualization components
-│   │   ├── map_generator.py
-│   │   └── styles.py
-│   ├── api/               # Flask REST API
-│   │   ├── app.py
-│   │   └── routes.py
-│   ├── models/            # Database models
-│   │   ├── facility.py
-│   │   └── internet_metric.py
-│   └── utils/             # Helper functions
-│       ├── geo_utils.py
-│       └── validators.py
-├── tests/                 # Unit and integration tests
-├── docs/                  # Documentation
-├── data/                  # Cached data files
-├── static/                # Frontend assets
-├── templates/             # HTML templates
-├── requirements.txt       # Python dependencies
-├── config.py              # Configuration
-└── run.py                 # Entry point
+# On macOS/Linux:
+source venv/bin/activate
+```
+
+3. **Install dependencies**
+```bash
+pip install -r requirements.txt
+```
+
+4. **Run tests**
+```bash
+pytest tests/ -v
+```
+
+## 📖 Usage
+
+### Healthcare Desert Analysis
+```python
+from backend.analysis.healthcare_desert import HealthcareDesertAnalyzer
+
+analyzer = HealthcareDesertAnalyzer()
+
+# Example region data
+region = {
+    'facility_count': 1,
+    'population': 5000,
+    'avg_distance': 45,  # miles to nearest clinic
+    'specialists': 0,
+    'has_transportation': False
+}
+
+# Calculate desert score (0-1, higher = more severe)
+score = analyzer.calculate_desert_score(region)
+classification = analyzer.classify_region(score)
+
+print(f"Desert Score: {score:.2f}")
+print(f"Classification: {classification}")
+```
+
+### Telehealth Feasibility Analysis
+```python
+from backend.analysis.telehealth_feasibility import TelehealthFeasibilityAnalyzer
+
+analyzer = TelehealthFeasibilityAnalyzer()
+
+# Example internet data
+region = {
+    'download_speed': 5.0,    # Mbps
+    'upload_speed': 1.0,      # Mbps
+    'internet_coverage': 75,  # percentage
+    'reliability': 0.8        # 0-1 score
+}
+
+# Calculate feasibility score
+score = analyzer.calculate_feasibility_score(region)
+is_viable = analyzer.is_telehealth_viable(score)
+classification = analyzer.classify_feasibility(score)
+
+print(f"Feasibility Score: {score:.2f}")
+print(f"Viable: {is_viable}")
+print(f"Classification: {classification}")
+```
+
+## 🔬 Methodology
+
+### Healthcare Desert Score
+
+The compound metric considers:
+- **Facility Density** (30%): Facilities per 1,000 people
+- **Distance to Clinic** (30%): Average distance to nearest healthcare facility
+- **Specialist Availability** (20%): Specialists per 10,000 people
+- **Transportation Access** (20%): Public transportation availability
+
+### Telehealth Feasibility Score
+
+Factors considered:
+- **Internet Speed** (50%): Download/upload speeds (min: 1.5/0.5 Mbps)
+- **Coverage** (30%): Percentage of population with internet access
+- **Reliability** (20%): Connection stability and uptime
+
+## 🧪 Testing
+```bash
+# Run all tests
+pytest tests/ -v
+
+# Run specific test file
+pytest tests/test_healthcare_desert.py -v
+
+# Run with coverage
+pytest tests/ --cov=backend --cov-report=html
+```
+
+## 📚 Data Sources
+
+- **Healthcare Facilities**: healthsites.io API, Alaska DHSS
+- **Internet Performance**: FCC Broadband Map, Ookla Speedtest
+- **Geographic Data**: Alaska Department of Commerce
+- **Population Data**: US Census Bureau
 
 ## 🤝 Contributing
 
-We welcome contributions! Areas needing help:
+We welcome contributions! Please see our [Contributing Guide](docs/CONTRIBUTING.md) for details.
 
-**High Priority:**
-- [ ] Data collection implementation
-- [ ] Healthcare desert calculation algorithm
-- [ ] Map visualization with Folium
-- [ ] API endpoint development
+### Development Setup
 
-**Medium Priority:**
-- [ ] Frontend UI/UX improvements
-- [ ] Test coverage
-- [ ] Documentation
-- [ ] Performance optimization
-
-**See:** [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines
-
-### Getting Started as a Contributor
 1. Fork the repository
 2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## 📖 Documentation
-
-- [Installation Guide](docs/INSTALLATION.md)
-- [Architecture Overview](docs/ARCHITECTURE.md)
-- [Data Sources](docs/DATA_SOURCES.md)
-- [API Documentation](docs/API.md)
-- [Contributing Guidelines](CONTRIBUTING.md)
-
-## 👥 Team
-
-**Mentors:**
-- Dr. Pradeeban Kathiravelu - pkathiravelu@alaska.edu
-- Dr. David Moxley - dpmoxley@alaska.edu
-
-**Contributors:**
-- [Your name could be here!]
-
-## 🔗 Links
-
-- [Discussion Forum](https://github.com/KathiraveluLab/TENeT/discussions)
-- [Alaska GSoC](https://github.com/uaanchorage/GSoC)
-- [Issue Tracker](https://github.com/KathiraveluLab/TENeT/issues)
+3. Make your changes
+4. Write/update tests
+5. Ensure tests pass (`pytest tests/ -v`)
+6. Commit your changes (`git commit -m 'Add amazing feature'`)
+7. Push to branch (`git push origin feature/amazing-feature`)
+8. Open a Pull Request
 
 ## 📄 License
 
-[MIT License](LICENSE) (or specify actual license)
+This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENSE) file for details.
 
 ## 🙏 Acknowledgments
 
-- Alaska GSoC Initiative
 - University of Alaska Anchorage
-- University of Alaska Fairbanks
-- Alaska Developer Alliance
-- Healthcare.gov for facility data
-- FCC for broadband mapping data
+- KathiraveluLab research team
+- Alaska healthcare providers
+- Open-source community
 
-## 📬 Contact
+## 📧 Contact
 
-For questions or discussions:
-- Open an issue
-- Join our [discussion forum](https://github.com/KathiraveluLab/TENeT/discussions)
-- Email: pkathiravelu@alaska.edu
+- Project Lead: [Professor Pradeeban Kathiravelu](https://github.com/pradeeban)
+- Repository: https://github.com/KathiraveluLab/TENeT
+- Issues: https://github.com/KathiraveluLab/TENeT/issues
+
+## 🗺️ Roadmap
+
+- [x] Core analysis algorithms
+- [x] Test suite
+- [ ] Data collection pipeline
+- [ ] Database integration
+- [ ] REST API
+- [ ] Interactive map interface
+- [ ] Analytics dashboard
+- [ ] Deployment on Alaska infrastructure
 
 ---
 
-**Built with ❤️ for Alaska's rural communities**
+**Built with ❤️ for Alaska healthcare access**
+```
 
-*Helping bring healthcare to those who need it most*
+3. Save (Ctrl+S)
+
+---
+
+## ✅ Step 9: Create .gitignore
+
+### **FILE 16: Update `.gitignore`**
+
+1. `.gitignore` should already exist
+2. Open it and make sure it has these lines:
+```
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+*.egg-info/
+
+# Database
+*.db
+*.sqlite
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Environment
+.env
+.env.local
+
+# Testing
+.pytest_cache/
+htmlcov/
+.coverage
+
+# OS
+.DS_Store
+Thumbs.db
