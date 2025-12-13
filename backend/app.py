@@ -4,7 +4,7 @@ from flask_cors import CORS
 app = Flask(__name__)
 
 # Configure CORS to allow requests from frontend
-CORS(app, origins=["http://localhost:5173"])
+CORS(app, origins=os.environ.get('CORS_ORIGINS', 'http://localhost:5173').split(','))
 
 @app.route('/api/health', methods=['GET'])
 def health_check():
