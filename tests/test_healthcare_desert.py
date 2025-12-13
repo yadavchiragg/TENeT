@@ -53,8 +53,7 @@ class TestHealthcareDesertAnalyzer:
         # 0 miles = score 0 (good)
         assert self.analyzer._calculate_distance_score(0) == 0.0
         
-        # 50 miles = score 1 (bad)
-        assert self.analyzer._calculate_distance_score(50) >= 0.9
+        assert self.analyzer._calculate_distance_score(50) == 1.0
         
         # 25 miles = score 0.5
-        assert 0.4 <= self.analyzer._calculate_distance_score(25) <= 0.6
+        assert self.analyzer._calculate_distance_score(25) == pytest.approx(0.5)
